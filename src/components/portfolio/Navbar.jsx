@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -161,16 +160,21 @@ export default function Navbar() {
               </motion.a>
             </div>
 
-            {/* Hamburger Menu - Full theme gradient */}
+            {/* Hamburger Menu - Gradient lines & light gradient bg */}
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               className={`lg:hidden relative p-2.5 rounded-xl backdrop-blur-sm transition-all duration-300 ${
                 isMobileMenuOpen
-                  ? "bg-gradient-to-br from-[#f72585]/15 via-[#7c3aed]/15 to-[#00b4d8]/15 border border-[#f72585]/30 hover:from-[#f72585]/25 hover:via-[#7c3aed]/25 hover:to-[#00b4d8]/25"
-                  : "bg-gradient-to-br from-[#00b4d8]/10 via-[#7c3aed]/10 to-[#f72585]/10 border border-border/50 hover:from-[#00b4d8]/20 hover:via-[#7c3aed]/20 hover:to-[#f72585]/20"
+                  ? "border border-[#f72585]/20 hover:border-[#f72585]/30"
+                  : "border border-white/10 hover:border-white/20"
               }`}
+              style={{
+                background: isMobileMenuOpen
+                  ? "linear-gradient(135deg, rgba(247,37,133,0.12) 0%, rgba(124,58,237,0.12) 50%, rgba(0,180,216,0.12) 100%)"
+                  : "linear-gradient(135deg, rgba(0,180,216,0.10) 0%, rgba(124,58,237,0.10) 50%, rgba(247,37,133,0.10) 100%)",
+              }}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4 }}
@@ -183,14 +187,31 @@ export default function Navbar() {
                     animate={{ rotate: 0, opacity: 1, scale: 1 }}
                     exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
                     transition={{ duration: 0.2 }}
-                    className="flex items-center justify-center w-5 h-5"
+                    className="flex items-center justify-center w-[22px] h-[22px]"
                   >
-                    <span className="bg-gradient-to-r from-[#f72585] via-[#7c3aed] to-[#00b4d8] [&>svg]:drop-shadow-[0_0_4px_rgba(247,37,133,0.5)]">
-                      <X
-                        size={22}
-                        className="text-[#f72585] [&>path]:stroke-[#f72585]"
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                      <defs>
+                        <linearGradient
+                          id="grad-close-x1"
+                          x1="0"
+                          y1="0"
+                          x2="24"
+                          y2="24"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop offset="0%" stopColor="#f72585" />
+                          <stop offset="50%" stopColor="#7c3aed" />
+                          <stop offset="100%" stopColor="#00b4d8" />
+                        </linearGradient>
+                      </defs>
+                      <path
+                        d="M18 6L6 18M6 6l12 12"
+                        stroke="url(#grad-close-x1)"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
-                    </span>
+                    </svg>
                   </motion.span>
                 ) : (
                   <motion.span
@@ -199,14 +220,51 @@ export default function Navbar() {
                     animate={{ rotate: 0, opacity: 1, scale: 1 }}
                     exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
                     transition={{ duration: 0.2 }}
-                    className="flex items-center justify-center w-5 h-5"
+                    className="flex items-center justify-center w-[22px] h-[22px]"
                   >
-                    <span className="bg-gradient-to-r from-[#00b4d8] via-[#7c3aed] to-[#f72585] [&>svg]:drop-shadow-[0_0_4px_rgba(0,180,216,0.5)]">
-                      <Menu
-                        size={22}
-                        className="text-[#00b4d8] [&>path]:stroke-[#00b4d8]"
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                      <defs>
+                        <linearGradient
+                          id="grad-menu-x1"
+                          x1="3"
+                          y1="0"
+                          x2="21"
+                          y2="0"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop offset="0%" stopColor="#00b4d8" />
+                          <stop offset="50%" stopColor="#7c3aed" />
+                          <stop offset="100%" stopColor="#f72585" />
+                        </linearGradient>
+                      </defs>
+                      <line
+                        x1="4"
+                        y1="6"
+                        x2="20"
+                        y2="6"
+                        stroke="url(#grad-menu-x1)"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
                       />
-                    </span>
+                      <line
+                        x1="4"
+                        y1="12"
+                        x2="20"
+                        y2="12"
+                        stroke="url(#grad-menu-x1)"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                      />
+                      <line
+                        x1="4"
+                        y1="18"
+                        x2="20"
+                        y2="18"
+                        stroke="url(#grad-menu-x1)"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                      />
+                    </svg>
                   </motion.span>
                 )}
               </AnimatePresence>
