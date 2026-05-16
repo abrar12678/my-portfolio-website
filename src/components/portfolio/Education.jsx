@@ -21,6 +21,23 @@ const educationData = [
       "Computer Science & Engineering",
       "Lab Projects & Coding Competitions",
     ],
+    dotColor: "#00b4d8",
+    accentColor: "#00b4d8",
+  },
+  {
+    degree: "Secondary School Certificate (SSC)",
+    institution: "Nawab Habibullah Model School & College",
+    location: "Uttara, Dhaka",
+    period: "2023 - 2025",
+    description:
+      "Completed Secondary School Certificate education with a focus on Science. Built a strong foundation in mathematics, physics, and computer science that sparked the passion for software development and programming.",
+    highlights: [
+      "Science Group",
+      "Computer Science Focus",
+      "Self-taught Web Development",
+    ],
+    dotColor: "#7c3aed",
+    accentColor: "#7c3aed",
   },
   {
     degree: "Self-Taught Full Stack Development",
@@ -34,36 +51,100 @@ const educationData = [
       "10+ Projects Built",
       "Continuous Learning",
     ],
+    dotColor: "#f72585",
+    accentColor: "#f72585",
   },
 ];
+
+function PulsingDot({ color }) {
+  return (
+    <div className="absolute left-[11px] md:left-1/2 -translate-x-1/2 top-0 z-10">
+      {/* Outer pulse ring */}
+      <motion.div
+        className="absolute -inset-[6px] rounded-full"
+        style={{ border: `2px solid ${color}40` }}
+        animate={{ scale: [1, 1.8], opacity: [0.6, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeOut" }}
+      />
+      {/* Second pulse ring — delayed */}
+      <motion.div
+        className="absolute -inset-[6px] rounded-full"
+        style={{ border: `1px solid ${color}30` }}
+        animate={{ scale: [1, 2.2], opacity: [0.4, 0] }}
+        transition={{
+          duration: 2.5,
+          repeat: Infinity,
+          ease: "easeOut",
+          delay: 0.8,
+        }}
+      />
+      {/* Dot border */}
+      <div
+        className="w-[22px] h-[22px] rounded-full bg-background flex items-center justify-center"
+        style={{ border: `2px solid ${color}` }}
+      >
+        {/* Inner fill */}
+        <motion.div
+          className="w-[10px] h-[10px] rounded-full"
+          style={{ backgroundColor: color }}
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
+    </div>
+  );
+}
 
 export default function Education() {
   const sectionRef = useRef(null);
   const timelineRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       if (!timelineRef.current) return;
-      const lines = timelineRef.current.querySelectorAll(".timeline-line-fill");
-      lines.forEach((line) => {
+
+      // Animate the timeline line fill
+      const lineFill = timelineRef.current.querySelector(".timeline-line-fill");
+      if (lineFill) {
         gsap.fromTo(
-          line,
+          lineFill,
           { scaleY: 0 },
           {
             scaleY: 1,
-            duration: 1.5,
+            duration: 2,
             ease: "power3.inOut",
             scrollTrigger: {
-              trigger: line,
-              start: "top 85%",
-              end: "bottom 60%",
+              trigger: timelineRef.current,
+              start: "top 70%",
+              end: "bottom 50%",
               scrub: 1,
+            },
+          },
+        );
+      }
+
+      // Staggered entrance for each card
+      const cards = timelineRef.current.querySelectorAll(".edu-card");
+      cards.forEach((card, i) => {
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 40, x: i % 2 === 0 ? -20 : 20 },
+          {
+            opacity: 1,
+            y: 0,
+            x: 0,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
             },
           },
         );
       });
     }, sectionRef);
+
     return () => ctx.revert();
   }, []);
 
@@ -73,8 +154,12 @@ export default function Education() {
       id="education"
       className="relative py-24 md:py-32 overflow-hidden"
     >
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-[#7c3aed]/3 blur-[120px] pointer-events-none" />
+      {/* Background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-[#7c3aed]/[0.04] blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] rounded-full bg-[#00b4d8]/[0.03] blur-[120px] pointer-events-none" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -93,70 +178,170 @@ export default function Education() {
           </p>
         </motion.div>
 
+        {/* Timeline */}
         <div className="max-w-4xl mx-auto" ref={timelineRef}>
           <div className="relative">
-            <div className="absolute left-[19px] md:left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2">
-              <div className="timeline-line-fill w-full h-full bg-gradient-to-b from-[#00b4d8] via-[#7c3aed] to-[#f72585] origin-top rounded-full" />
+            {/* Timeline gradient line */}
+            <div className="absolute left-[21px] md:left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 bg-white/[0.04]">
+              <div
+                className="timeline-line-fill w-full h-full rounded-full origin-top"
+                style={{
+                  background:
+                    "linear-gradient(180deg, #00b4d8, #7c3aed 50%, #f72585)",
+                }}
+              />
             </div>
-            {educationData.map((item, index) => (
-              <motion.div
-                key={item.degree}
-                initial={{ opacity: 0, y: 40 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 * index }}
-                className={`relative flex flex-col md:flex-row gap-8 mb-12 last:mb-0 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
-              >
-                <div className="absolute left-[11px] md:left-1/2 -translate-x-1/2 top-0 w-[18px] h-[18px] rounded-full bg-background border-2 border-[#00b4d8] z-10">
-                  <div className="absolute inset-[3px] rounded-full bg-[#00b4d8]" />
-                </div>
+
+            {educationData.map((item, index) => {
+              const isEven = index % 2 === 0;
+              return (
                 <div
-                  className={`flex-1 ml-12 md:ml-0 ${index % 2 === 0 ? "md:pr-16 md:text-right" : "md:pl-16"}`}
+                  key={item.degree}
+                  className={`relative flex flex-col md:flex-row gap-6 md:gap-8 mb-14 last:mb-0 ${
+                    isEven ? "md:flex-row" : "md:flex-row-reverse"
+                  }`}
                 >
-                  <motion.div
-                    whileHover={{ y: -3 }}
-                    className="p-6 rounded-2xl bg-secondary/20 border border-border hover:border-[#00b4d8]/30 transition-all duration-300 group"
+                  {/* Pulsing dot */}
+                  <PulsingDot color={item.dotColor} />
+
+                  {/* Card */}
+                  <div
+                    className={`flex-1 ml-14 md:ml-0 ${isEven ? "md:pr-16 md:text-right" : "md:pl-16"}`}
                   >
-                    <div
-                      className={`flex items-center gap-2 mb-3 flex-wrap ${index % 2 === 0 ? "md:justify-end" : ""}`}
-                    >
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#00b4d8]/10 text-[#00b4d8] text-xs font-medium">
-                        <Calendar size={12} />
-                        {item.period}
-                      </span>
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#7c3aed]/10 text-[#7c3aed] text-xs font-medium">
-                        <MapPin size={12} />
-                        {item.location}
-                      </span>
-                    </div>
-                    <h4 className="text-lg font-bold text-foreground mb-1 group-hover:text-[#00b4d8] transition-colors">
-                      {item.degree}
-                    </h4>
-                    <p className="text-sm font-medium text-[#00b4d8] mb-3">
-                      {item.institution}
-                    </p>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                      {item.description}
-                    </p>
-                    <div
-                      className={`flex flex-wrap gap-2 ${index % 2 === 0 ? "md:justify-end" : ""}`}
-                    >
-                      {item.highlights.map((highlight) => (
-                        <span
-                          key={highlight}
-                          className="px-2.5 py-1 rounded-lg bg-secondary/50 text-xs text-muted-foreground border border-border"
+                    <div className="relative group/edu">
+                      {/* ===== ALWAYS VISIBLE Rotating Gradient Border ===== */}
+                      <div
+                        className="absolute -inset-[2px] rounded-2xl pointer-events-none"
+                        style={{
+                          background:
+                            "conic-gradient(from var(--gradient-angle), #00b4d8, #7c3aed, #f72585, #64ffda, #ffbe0b, #00b4d8)",
+                          animation: "border-spin 3s linear infinite",
+                        }}
+                      />
+                      {/* Outer glow (always visible, subtle) */}
+                      <div
+                        className="absolute -inset-[2px] rounded-2xl pointer-events-none"
+                        style={{
+                          boxShadow: `0 0 15px ${item.accentColor}15, 0 0 30px ${item.accentColor}08`,
+                          transition: "box-shadow 0.5s ease",
+                        }}
+                      />
+                      {/* Enhanced glow on hover */}
+                      <div
+                        className="absolute -inset-[2px] rounded-2xl pointer-events-none opacity-0 group-hover/edu:opacity-100 transition-opacity duration-500"
+                        style={{
+                          boxShadow: `0 0 25px ${item.accentColor}25, 0 0 50px ${item.accentColor}12, 0 0 80px ${item.accentColor}06`,
+                        }}
+                      />
+                      <motion.div
+                        whileHover={{
+                          y: -8,
+                          transition: {
+                            type: "spring",
+                            stiffness: 300,
+                            damping: 20,
+                          },
+                        }}
+                        className="edu-card relative p-6 rounded-[14px] overflow-hidden cursor-default"
+                        style={{
+                          background: "rgba(12, 12, 18, 0.95)",
+                          backdropFilter: "blur(20px)",
+                          WebkitBackdropFilter: "blur(20px)",
+                        }}
+                      >
+                        {/* Shimmer overlay on hover */}
+                        <div className="absolute inset-0 pointer-events-none opacity-0 group-hover/edu:opacity-100 transition-opacity duration-700 shimmer rounded-[14px]" />
+
+                        {/* Tags row */}
+                        <div
+                          className={`flex items-center gap-2 mb-4 flex-wrap ${isEven ? "md:justify-end" : ""}`}
                         >
-                          {highlight}
-                        </span>
-                      ))}
+                          <span
+                            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 hover:scale-105 cursor-default"
+                            style={{
+                              background: `linear-gradient(135deg, ${item.accentColor}15, ${item.accentColor}08)`,
+                              color: item.accentColor,
+                              border: `1px solid ${item.accentColor}20`,
+                            }}
+                          >
+                            <Calendar size={12} />
+                            {item.period}
+                          </span>
+                          <span
+                            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 hover:scale-105 cursor-default"
+                            style={{
+                              background: `linear-gradient(135deg, #7c3aed15, #7c3aed08)`,
+                              color: "#7c3aed",
+                              border: `1px solid #7c3aed20`,
+                            }}
+                          >
+                            <MapPin size={12} />
+                            {item.location}
+                          </span>
+                        </div>
+
+                        {/* Degree */}
+                        <h4 className="text-lg font-bold text-foreground mb-1 transition-colors duration-300">
+                          <span className="group-hover/edu:text-white transition-colors duration-300">
+                            {item.degree}
+                          </span>
+                        </h4>
+                        <p
+                          className="text-sm font-medium mb-3 transition-colors duration-300 group-hover/edu:text-white/80"
+                          style={{ color: item.accentColor }}
+                        >
+                          {item.institution}
+                        </p>
+                        <p className="text-sm text-muted-foreground leading-relaxed mb-4 group-hover/edu:text-muted-foreground/90 transition-colors duration-300">
+                          {item.description}
+                        </p>
+
+                        {/* Highlight pills */}
+                        <div
+                          className={`flex flex-wrap gap-2 ${isEven ? "md:justify-end" : ""}`}
+                        >
+                          {item.highlights.map((highlight, hIdx) => (
+                            <motion.span
+                              key={highlight}
+                              whileHover={{ scale: 1.08, y: -2 }}
+                              whileTap={{ scale: 0.95 }}
+                              className="px-3 py-1 rounded-lg text-xs font-medium transition-all duration-300 cursor-default hover:shadow-lg"
+                              style={{
+                                background: `linear-gradient(135deg, ${hIdx % 2 === 0 ? "#00b4d8" : "#7c3aed"}10, ${hIdx % 2 === 0 ? "#00b4d8" : "#7c3aed"}05)`,
+                                color: hIdx % 2 === 0 ? "#00b4d8" : "#7c3aed",
+                                border: `1px solid ${hIdx % 2 === 0 ? "#00b4d8" : "#7c3aed"}15`,
+                              }}
+                            >
+                              {highlight}
+                            </motion.span>
+                          ))}
+                        </div>
+                      </motion.div>
                     </div>
-                  </motion.div>
+                  </div>
+
+                  {/* Spacer for alternating layout on desktop */}
+                  <div className="hidden md:block flex-1" />
                 </div>
-                <div className="hidden md:block flex-1" />
-              </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
+
+      {/* ===== Gradient border animation keyframes ===== */}
+      <style jsx global>{`
+        @property --gradient-angle {
+          syntax: "<angle>";
+          initial-value: 0deg;
+          inherits: false;
+        }
+        @keyframes border-spin {
+          to {
+            --gradient-angle: 360deg;
+          }
+        }
+      `}</style>
     </section>
   );
 }
