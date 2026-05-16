@@ -228,16 +228,11 @@ export default function Projects() {
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{
-                      scale: 1.05,
-                      boxShadow:
-                        "0 0 25px rgba(124, 58, 237, 0.4), 0 0 50px rgba(0, 180, 216, 0.2), 0 10px 35px rgba(124, 58, 237, 0.2)",
+                      scale: 1.03,
+                      boxShadow: "0 8px 25px rgba(0, 180, 216, 0.25)",
                     }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-white transition-all duration-300 flex-1 justify-center relative overflow-hidden group/ls cursor-pointer"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, #7c3aed 0%, #00b4d8 100%)",
-                    }}
+                    whileTap={{ scale: 0.97 }}
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-white transition-all duration-300 flex-1 justify-center relative overflow-hidden group/ls bg-gradient-to-r from-[#00b4d8] via-[#7c3aed] to-[#f72585]"
                   >
                     <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/ls:translate-x-full transition-transform duration-700" />
                     <span className="relative z-10 flex items-center gap-2">

@@ -322,12 +322,11 @@ export default function Hero() {
                     ?.scrollIntoView({ behavior: "smooth" });
                 }}
                 whileHover={{
-                  scale: 1.06,
-                  boxShadow:
-                    "0 0 20px rgba(0, 180, 216, 0.4), 0 0 60px rgba(0, 180, 216, 0.15), 0 10px 40px rgba(124, 58, 237, 0.2)",
+                  scale: 1.05,
+                  boxShadow: "0 8px 25px rgba(0, 180, 216, 0.3)",
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#00b4d8] to-[#7c3aed] text-white font-medium text-sm transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden group/vp cursor-pointer"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#00b4d8] via-[#7c3aed] to-[#f72585] text-white font-medium text-sm transition-all duration-300 flex items-center justify-center gap-2 relative overflow-hidden group/vp"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover/vp:translate-x-full transition-transform duration-700" />
                 <span className="relative z-10 flex items-center gap-2">
