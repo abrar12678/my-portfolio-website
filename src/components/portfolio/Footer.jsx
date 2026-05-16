@@ -139,7 +139,7 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-5 flex items-center gap-2">
-              <span className="w-6 h-px bg-gradient-to-r from-[#00b4d8] to-transparent" />
+              <span className="w-6 h-px bg-gradient-to-r from-[#00b4d8] via-[#7c3aed] to-[#f72585]" />
               Quick Links
             </h4>
             <ul className="space-y-1">
@@ -152,15 +152,23 @@ export default function Footer() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.3, delay: 0.05 * index }}
-                    className="flex items-center gap-3 text-sm text-muted-foreground hover:text-[#00b4d8] transition-all duration-300 py-2 px-3 -ml-3 rounded-lg hover:bg-[#00b4d8]/5 group"
+                    className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-all duration-300 py-2 px-3 -ml-3 rounded-lg group"
                   >
-                    <span className="text-[#00b4d8]/0 group-hover:text-[#00b4d8] transition-all duration-300">
-                      <ArrowUpRight
-                        size={12}
-                        className="rotate-45 group-hover:rotate-0 transition-transform duration-300"
-                      />
+                    {/* Gradient arrow indicator */}
+                    <span className="flex-shrink-0 w-0 group-hover:w-5 overflow-hidden transition-all duration-300">
+                      <span className="bg-gradient-to-r from-[#00b4d8] via-[#7c3aed] to-[#f72585] bg-clip-text text-transparent">
+                        <ArrowUpRight
+                          size={14}
+                          className="rotate-45 group-hover:rotate-0 transition-transform duration-300"
+                        />
+                      </span>
                     </span>
-                    {link.label}
+                    {/* Gradient line indicator */}
+                    <span className="w-0 group-hover:w-5 h-px bg-gradient-to-r from-[#00b4d8] via-[#7c3aed] to-[#f72585] transition-all duration-300 rounded-full" />
+                    {/* Gradient text on hover */}
+                    <span className="group-hover:bg-gradient-to-r group-hover:from-[#00b4d8] group-hover:via-[#7c3aed] group-hover:to-[#f72585] group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
+                      {link.label}
+                    </span>
                   </motion.a>
                 </li>
               ))}
@@ -175,7 +183,7 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-5 flex items-center gap-2">
-              <span className="w-6 h-px bg-gradient-to-r from-[#7c3aed] to-transparent" />
+              <span className="w-6 h-px bg-gradient-to-r from-[#7c3aed] via-[#f72585] to-[#00b4d8]" />
               Connect
             </h4>
             <p className="text-sm text-muted-foreground leading-relaxed mb-5">
@@ -206,7 +214,7 @@ export default function Footer() {
                     ["--hover-color"]: social.color,
                   }}
                 >
-                  {/* Hover glow background (same as Hero) */}
+                  {/* Hover glow background */}
                   <span
                     className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-md"
                     style={{ backgroundColor: `${social.color}15` }}

@@ -161,14 +161,15 @@ export default function Navbar() {
               </motion.a>
             </div>
 
+            {/* Hamburger Menu - Full theme gradient */}
             <motion.button
               whileTap={{ scale: 0.9 }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-              className={`lg:hidden relative p-2.5 rounded-xl border border-border/50 backdrop-blur-sm transition-all duration-300 ${
+              className={`lg:hidden relative p-2.5 rounded-xl backdrop-blur-sm transition-all duration-300 ${
                 isMobileMenuOpen
-                  ? "bg-gradient-to-br from-[#f72585]/20 to-[#7c3aed]/20 border-[#f72585]/30"
-                  : "bg-gradient-to-br from-[#00b4d8]/10 to-[#7c3aed]/10 hover:from-[#00b4d8]/20 hover:to-[#7c3aed]/20"
+                  ? "bg-gradient-to-br from-[#f72585]/15 via-[#7c3aed]/15 to-[#00b4d8]/15 border border-[#f72585]/30 hover:from-[#f72585]/25 hover:via-[#7c3aed]/25 hover:to-[#00b4d8]/25"
+                  : "bg-gradient-to-br from-[#00b4d8]/10 via-[#7c3aed]/10 to-[#f72585]/10 border border-border/50 hover:from-[#00b4d8]/20 hover:via-[#7c3aed]/20 hover:to-[#f72585]/20"
               }`}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -182,8 +183,14 @@ export default function Navbar() {
                     animate={{ rotate: 0, opacity: 1, scale: 1 }}
                     exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
                     transition={{ duration: 0.2 }}
+                    className="flex items-center justify-center w-5 h-5"
                   >
-                    <X size={22} className="text-[#f72585]" />
+                    <span className="bg-gradient-to-r from-[#f72585] via-[#7c3aed] to-[#00b4d8] [&>svg]:drop-shadow-[0_0_4px_rgba(247,37,133,0.5)]">
+                      <X
+                        size={22}
+                        className="text-[#f72585] [&>path]:stroke-[#f72585]"
+                      />
+                    </span>
                   </motion.span>
                 ) : (
                   <motion.span
@@ -192,8 +199,14 @@ export default function Navbar() {
                     animate={{ rotate: 0, opacity: 1, scale: 1 }}
                     exit={{ rotate: -90, opacity: 0, scale: 0.5 }}
                     transition={{ duration: 0.2 }}
+                    className="flex items-center justify-center w-5 h-5"
                   >
-                    <Menu size={22} className="text-[#00b4d8]" />
+                    <span className="bg-gradient-to-r from-[#00b4d8] via-[#7c3aed] to-[#f72585] [&>svg]:drop-shadow-[0_0_4px_rgba(0,180,216,0.5)]">
+                      <Menu
+                        size={22}
+                        className="text-[#00b4d8] [&>path]:stroke-[#00b4d8]"
+                      />
+                    </span>
                   </motion.span>
                 )}
               </AnimatePresence>

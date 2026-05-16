@@ -25,21 +25,6 @@ const educationData = [
     accentColor: "#00b4d8",
   },
   {
-    degree: "Secondary School Certificate (SSC)",
-    institution: "Nawab Habibullah Model School & College",
-    location: "Uttara, Dhaka",
-    period: "2023 - 2025",
-    description:
-      "Completed Secondary School Certificate education with a focus on Science. Built a strong foundation in mathematics, physics, and computer science that sparked the passion for software development and programming.",
-    highlights: [
-      "Science Group",
-      "Computer Science Focus",
-      "Self-taught Web Development",
-    ],
-    dotColor: "#7c3aed",
-    accentColor: "#7c3aed",
-  },
-  {
     degree: "Self-Taught Full Stack Development",
     institution: "Online Learning Platforms",
     location: "Remote",
