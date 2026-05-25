@@ -37,6 +37,21 @@ const quickLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+/* ------------------------------------------------------------------ */
+/*  Email Helper                                                       */
+/* ------------------------------------------------------------------ */
+
+const EMAIL = "programmer.ab.etarnity@gmail.com";
+const GMAIL_COMPOSE = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}&su=Hello&body=`;
+
+function handleEmailClick(e) {
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (!isMobile) {
+    e.preventDefault();
+    window.open(GMAIL_COMPOSE, "_blank");
+  }
+}
+
 const socialLinks = [
   {
     icon: GithubIcon,
@@ -52,7 +67,8 @@ const socialLinks = [
   },
   {
     icon: MailIcon,
-    href: "mailto:programmer.ab.etarnity@gmail.com?subject=Hello&body=",
+    href: `mailto:${EMAIL}?subject=Hello&body=`,
+    isEmail: true,
     label: "Email",
     color: "#ea4335",
   },
@@ -105,7 +121,8 @@ export default function Footer() {
             {/* Contact Info */}
             <div className="space-y-3">
               <motion.a
-                href="mailto:programmer.ab.etarnity@gmail.com?subject=Hello&body="
+                href={`mailto:${EMAIL}?subject=Hello&body=`}
+                onClick={handleEmailClick}
                 whileHover={{ x: 4 }}
                 className="flex items-center gap-3 text-sm text-muted-foreground hover:text-[#00b4d8] transition-all duration-300 group"
               >
@@ -193,7 +210,8 @@ export default function Footer() {
                 <motion.a
                   key={social.label}
                   href={social.href}
-                  target="_blank"
+                  onClick={social.isEmail ? handleEmailClick : undefined}
+                  target={social.isEmail ? undefined : "_blank"}
                   rel="noopener noreferrer"
                   aria-label={social.label}
                   initial={{ opacity: 0, scale: 0.8 }}

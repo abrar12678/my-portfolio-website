@@ -110,6 +110,21 @@ function Particles() {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Email Helper                                                       */
+/* ------------------------------------------------------------------ */
+
+const EMAIL = "programmer.ab.etarnity@gmail.com";
+const GMAIL_COMPOSE = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}&su=Hello&body=`;
+
+function handleEmailClick(e) {
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (!isMobile) {
+    e.preventDefault();
+    window.open(GMAIL_COMPOSE, "_blank");
+  }
+}
+
+/* ------------------------------------------------------------------ */
 /*  Social Links                                                       */
 /* ------------------------------------------------------------------ */
 
@@ -128,7 +143,8 @@ const socials = [
   },
   {
     Icon: EmailIcon,
-    href: "mailto:programmer.ab.etarnity@gmail.com?subject=Hello&body=",
+    href: `mailto:${EMAIL}?subject=Hello&body=`,
+    onClick: handleEmailClick,
     label: "Email",
     color: "#00b4d8",
   },
@@ -336,7 +352,8 @@ export default function Hero() {
 
               {/* Contact Me */}
               <motion.a
-                href="mailto:programmer.ab.etarnity@gmail.com?subject=Hello&body="
+                href={`mailto:${EMAIL}?subject=Hello&body=`}
+                onClick={handleEmailClick}
                 whileHover={{
                   scale: 1.06,
                   boxShadow:
