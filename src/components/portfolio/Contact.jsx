@@ -188,9 +188,7 @@ export default function Contact() {
                   key={info.label}
                   href={info.href}
                   target={
-                    info.href.startsWith("mailto:") ||
-                    info.href.startsWith("tel:") ||
-                    info.href.startsWith("http")
+                    info.href.startsWith("tel:") || info.href.startsWith("http")
                       ? "_blank"
                       : undefined
                   }

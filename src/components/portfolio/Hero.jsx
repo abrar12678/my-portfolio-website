@@ -337,8 +337,6 @@ export default function Hero() {
               {/* Contact Me */}
               <motion.a
                 href="mailto:programmer.ab.etarnity@gmail.com?subject=Hello&body="
-                target="_blank"
-                rel="noopener noreferrer"
                 whileHover={{
                   scale: 1.06,
                   boxShadow:

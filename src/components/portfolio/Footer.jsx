@@ -106,8 +106,6 @@ export default function Footer() {
             <div className="space-y-3">
               <motion.a
                 href="mailto:programmer.ab.etarnity@gmail.com?subject=Hello&body="
-                target="_blank"
-                rel="noopener noreferrer"
                 whileHover={{ x: 4 }}
                 className="flex items-center gap-3 text-sm text-muted-foreground hover:text-[#00b4d8] transition-all duration-300 group"
               >
