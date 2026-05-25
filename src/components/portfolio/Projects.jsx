@@ -23,8 +23,8 @@ const projects = [
       "A comprehensive digital tools platform offering a suite of online utilities — from image converters and code formatters to SEO analyzers and JSON validators. Built with a modern, responsive interface for seamless productivity.",
     image: "/project-digitools.png",
     tags: ["Next.js", "React", "Tailwind CSS", "Node.js", "API"],
-    liveUrl: "https://digitools.vercel.app",
-    githubUrl: "https://github.com/abrar12678/digitools",
+    liveUrl: "https://abrar-digitools-platform.netlify.app/",
+    githubUrl: "https://github.com/abrar12678/digitools-platform",
     featured: true,
   },
   {
@@ -33,8 +33,8 @@ const projects = [
       "A full-featured platform for managing Qurbani services with animal listings, booking system, payment integration, and admin dashboard. Designed to simplify the Qurbani process during Eid with seamless user experience.",
     image: "/project-qurbanihut.png",
     tags: ["Next.js", "MongoDB", "Tailwind CSS", "Express.js", "Auth"],
-    liveUrl: "https://qurbanihut.vercel.app",
-    githubUrl: "https://github.com/abrar12678/qurbanihut",
+    liveUrl: "https://a-08-qurbanihut.vercel.app/",
+    githubUrl: "https://github.com/abrar12678/A-08-QurbaniHut",
     featured: true,
   },
   {
@@ -43,8 +43,8 @@ const projects = [
       "A modern mobile banking simulation with real-time transaction tracking, balance management, agent system, and responsive dashboard. Features REST API integration with a clean, intuitive interface.",
     image: "/project-payoo.png",
     tags: ["React", "Tailwind CSS", "JavaScript", "REST API", "Responsive"],
-    liveUrl: "https://payoo-mobile-bank.vercel.app",
-    githubUrl: "https://github.com/abrar12678/payoo-mobile-bank",
+    liveUrl: "https://abrar12678.github.io/project-payoo-mobile-bank/",
+    githubUrl: "https://github.com/abrar12678/project-payoo-mobile-bank",
     featured: true,
   },
 ];
