@@ -111,7 +111,7 @@ export default function Contact() {
       icon: Mail,
       label: "Email",
       value: "programmer.ab.etarnity@gmail.com",
-      href: "https://mail.google.com/mail/?view=cm&fs=1&to=programmer.ab.etarnity@gmail.com&su=&body=",
+      href: "mailto:programmer.ab.etarnity@gmail.com?subject=Hello&body=",
       color: "#00b4d8",
     },
     {

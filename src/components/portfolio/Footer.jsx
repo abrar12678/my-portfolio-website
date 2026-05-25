@@ -52,7 +52,7 @@ const socialLinks = [
   },
   {
     icon: MailIcon,
-    href: "https://mail.google.com/mail/?view=cm&fs=1&to=programmer.ab.etarnity@gmail.com&su=&body=",
+    href: "mailto:programmer.ab.etarnity@gmail.com?subject=Hello&body=",
     label: "Email",
     color: "#ea4335",
   },
@@ -105,7 +105,7 @@ export default function Footer() {
             {/* Contact Info */}
             <div className="space-y-3">
               <motion.a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=programmer.ab.etarnity@gmail.com&su=&body="
+                href="mailto:programmer.ab.etarnity@gmail.com?subject=Hello&body="
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ x: 4 }}

@@ -128,7 +128,7 @@ const socials = [
   },
   {
     Icon: EmailIcon,
-    href: "https://mail.google.com/mail/?view=cm&fs=1&to=programmer.ab.etarnity@gmail.com&su=&body=",
+    href: "mailto:programmer.ab.etarnity@gmail.com?subject=Hello&body=",
     label: "Email",
     color: "#00b4d8",
   },
@@ -336,7 +336,7 @@ export default function Hero() {
 
               {/* Contact Me */}
               <motion.a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=programmer.ab.etarnity@gmail.com&su=&body="
+                href="mailto:programmer.ab.etarnity@gmail.com?subject=Hello&body="
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{
