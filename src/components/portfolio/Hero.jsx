@@ -370,7 +370,7 @@ export default function Hero() {
 
               {/* Download Resume */}
               <motion.a
-                href="/MD-ABRAR-HASAN-FULL-STACK-Developer-RESUME.pdf"
+                href="/MD_ABRAR_HASAN_FULL_STACK_RESUME.pdf"
                 download
                 whileHover={{
                   scale: 1.06,
