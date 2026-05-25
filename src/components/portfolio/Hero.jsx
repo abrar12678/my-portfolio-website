@@ -400,8 +400,9 @@ export default function Hero() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  target="_blank"
+                  target={social.onClick ? undefined : "_blank"}
                   rel="noopener noreferrer"
+                  onClick={social.onClick}
                   whileHover={{
                     scale: 1.25,
                     y: -3,

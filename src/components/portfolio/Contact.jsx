@@ -200,11 +200,14 @@ export default function Contact() {
                   key={info.label}
                   href={info.href}
                   target={
-                    info.href.startsWith("tel:") || info.href.startsWith("http")
-                      ? "_blank"
-                      : undefined
+                    info.onClick
+                      ? undefined
+                      : info.href.startsWith("http")
+                        ? "_blank"
+                        : undefined
                   }
                   rel="noopener noreferrer"
+                  onClick={info.onClick}
                   initial={{ opacity: 0, x: -30 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.3 + 0.1 * index }}
