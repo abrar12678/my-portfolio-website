@@ -172,7 +172,7 @@ export default function TechStack() {
     <section
       ref={sectionRef}
       id="techstack"
-      className="relative py-24 md:py-32"
+      className="relative py-24 md:py-32 overflow-hidden"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] rounded-full bg-[#00b4d8]/3 blur-[120px] -translate-y-1/2" />

@@ -11,7 +11,7 @@ import Footer from "@/components/portfolio/Footer";
 export default function Home() {
   return (
     <SmoothScroller>
-      <main className="min-h-screen">
+      <main className="min-h-screen overflow-x-hidden">
         <Navbar />
         <Hero />
         <div className="section-line max-w-7xl mx-auto" />
